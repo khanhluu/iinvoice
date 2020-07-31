@@ -1,0 +1,26 @@
+server: 
+  port: 8004
+spring:
+  application:
+    name: iinvoice
+---
+spring:
+  profiles: dev
+  data:
+    rest:
+      base-path: api
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    url: jdbc:h2:mem:invoicedb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 123
+    platform: org.hibernate.dialect.H2Dialect
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
